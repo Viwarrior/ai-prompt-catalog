@@ -1,19 +1,31 @@
 package com.avinash.promptstore.promptmanagement;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.avinash.promptstore.promptmanagement.dtos.PromptDefaultRequestDTO;
+import com.avinash.promptstore.promptmanagement.dtos.PromptDefaultResponseDTO;
 import com.avinash.promptstore.promptmanagement.entities.PromptEntity;
+import com.avinash.promptstore.promptmanagement.mappers.PromptEntityDTOMapper;
 
 @Service
 public class PromptService {
+
+    Logger logger = LoggerFactory.getLogger(PromptService.class);
+
     PromptRepository promptRepository;
 
-    public PromptService(PromptRepository promptRepository) {
+    PromptEntityDTOMapper promptEntityDTOMapper;
+
+    public PromptService(PromptRepository promptRepository, PromptEntityDTOMapper promptEntityDTOMapper) {
         this.promptRepository = promptRepository;
+        this.promptEntityDTOMapper = promptEntityDTOMapper;
     }
 
-    public String createPrompt(PromptEntity promptEntity){
-        return promptRepository.insertPrompt(promptEntity);
+    public PromptDefaultResponseDTO createPrompt(PromptDefaultRequestDTO promptDefaultRequestDTO){
+        PromptEntity promptEntity = promptRepository.insertPrompt(promptEntityDTOMapper.toEntity(promptDefaultRequestDTO));
+        return promptEntityDTOMapper.toDTO(promptEntity);
     }
     
 }

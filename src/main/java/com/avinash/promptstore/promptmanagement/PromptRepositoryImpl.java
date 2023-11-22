@@ -17,9 +17,9 @@ public class PromptRepositoryImpl implements PromptRepository {
 
 
     @Override
-    public String insertPrompt(PromptEntity promptEntity) {
+    public PromptEntity insertPrompt(PromptEntity promptEntity) {
         PromptEntity createdPromptEntity = mongoTemplate.insert(promptEntity);
-        return createdPromptEntity.getPromptId();
+        return createdPromptEntity;
     }
     
 }

@@ -7,9 +7,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.avinash.promptstore.promptmanagement.dtos.PromptDTO;
+import com.avinash.promptstore.promptmanagement.dtos.PromptDefaultRequestDTO;
+import com.avinash.promptstore.promptmanagement.dtos.PromptDefaultResponseDTO;
 import com.avinash.promptstore.promptmanagement.mappers.PromptEntityDTOMapper;
 
 @Controller
@@ -28,10 +30,10 @@ public class PromptController {
     }
 
     @PostMapping
-    public ResponseEntity<PromptDTO> post(){
-        PromptDTO promptDTO = new PromptDTO(null, "name", null, null, null, null, null, 0, null);
-        promptService.createPrompt(promptEntityDTOMapper.toEntity(promptDTO));
-        return new ResponseEntity<PromptDTO>(promptDTO, HttpStatus.CREATED);
+    public ResponseEntity<PromptDefaultResponseDTO> post(@RequestBody PromptDefaultRequestDTO requestPayload){
+        logger.info("Received POST request for prompt");
+        PromptDefaultResponseDTO response = promptService.createPrompt(requestPayload);
+        return new ResponseEntity<PromptDefaultResponseDTO>(response, HttpStatus.CREATED);
     }
 
     @GetMapping
