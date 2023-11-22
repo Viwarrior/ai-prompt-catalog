@@ -6,8 +6,8 @@ import org.springframework.stereotype.Service;
 
 import com.avinash.promptstore.promptmanagement.dtos.PromptDefaultRequestDTO;
 import com.avinash.promptstore.promptmanagement.dtos.PromptDefaultResponseDTO;
-import com.avinash.promptstore.promptmanagement.entities.PromptEntity;
 import com.avinash.promptstore.promptmanagement.mappers.PromptEntityDTOMapper;
+import com.avinash.promptstore.promptmanagement.models.PromptEntity;
 
 @Service
 public class PromptService {

@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 
 import com.avinash.promptstore.promptmanagement.dtos.PromptDefaultRequestDTO;
 import com.avinash.promptstore.promptmanagement.dtos.PromptDefaultResponseDTO;
-import com.avinash.promptstore.promptmanagement.entities.PromptEntity;
+import com.avinash.promptstore.promptmanagement.models.PromptEntity;
 
 @Component
 public class PromptEntityDTOMapper {

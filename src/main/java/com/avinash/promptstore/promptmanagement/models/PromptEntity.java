@@ -1,4 +1,4 @@
-package com.avinash.promptstore.promptmanagement.entities;
+package com.avinash.promptstore.promptmanagement.models;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

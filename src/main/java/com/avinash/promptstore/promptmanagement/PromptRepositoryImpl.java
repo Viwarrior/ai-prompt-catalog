@@ -3,7 +3,7 @@ package com.avinash.promptstore.promptmanagement;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.avinash.promptstore.promptmanagement.entities.PromptEntity;
+import com.avinash.promptstore.promptmanagement.models.PromptEntity;
 
 @Repository
 public class PromptRepositoryImpl implements PromptRepository {
