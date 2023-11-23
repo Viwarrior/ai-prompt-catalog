@@ -6,17 +6,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.avinash.promptstore.promptmanagement.dtos.PromptDefaultRequestDTO;
 import com.avinash.promptstore.promptmanagement.dtos.PromptDefaultResponseDTO;
 import com.avinash.promptstore.promptmanagement.mappers.PromptEntityDTOMapper;
 
 @Controller
-@RequestMapping(name = "prompts", value = "/api/v1/prompts", consumes = "application/json", produces = "application/json")
-public class PromptController {
+public class PromptController implements PromptApi{
 
     Logger logger = LoggerFactory.getLogger(PromptController.class);
 
@@ -29,7 +25,6 @@ public class PromptController {
         this.promptEntityDTOMapper = promptEntityDTOMapper;
     }
 
-    @PostMapping
     public ResponseEntity<PromptDefaultResponseDTO> post(@RequestBody PromptDefaultRequestDTO requestPayload){
         logger.info("Received POST request for prompt");
         PromptDefaultResponseDTO response = promptService.createPrompt(requestPayload);

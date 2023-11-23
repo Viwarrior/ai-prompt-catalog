@@ -11,3 +11,9 @@ server:
     port: ${SERVER_PORT:8091}
     servlet:
         context-path: ${SERVER_CONTEXT_PATH:/promptstore}
+
+springdoc:
+    api-docs:
+        path: /api-spec
+    swagger-ui:
+        path: /swagger-ui
