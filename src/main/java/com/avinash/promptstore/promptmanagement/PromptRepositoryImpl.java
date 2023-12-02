@@ -8,7 +8,7 @@ import com.avinash.promptstore.promptmanagement.models.PromptEntity;
 @Repository
 public class PromptRepositoryImpl implements PromptRepository {
 
-    MongoTemplate  mongoTemplate;
+    private final MongoTemplate  mongoTemplate;
 
     
     public PromptRepositoryImpl(MongoTemplate mongoTemplate) {

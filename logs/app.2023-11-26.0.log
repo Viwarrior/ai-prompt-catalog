@@ -1,0 +1,94 @@
+17:12:14.454 [restartedMain] INFO  c.a.p.PromptstoreApplication - Starting PromptstoreApplication using Java 17.0.5 with PID 26300 (C:\Users\Avinash_Avinash1\OneDrive - Dell Technologies\projects\ai-prompt-catalog\target\classes started by Avinash_Avinash1 in C:\Users\Avinash_Avinash1\OneDrive - Dell Technologies\projects\ai-prompt-catalog)
+17:12:14.461 [restartedMain] INFO  c.a.p.PromptstoreApplication - No active profile set, falling back to 1 default profile: "default"
+17:12:14.589 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+17:12:14.590 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+17:12:16.218 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+17:12:16.262 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 37 ms. Found 0 MongoDB repository interfaces.
+17:12:17.332 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8091 (http)
+17:12:17.356 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8091"]
+17:12:17.365 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+17:12:17.367 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.15]
+17:12:17.496 [restartedMain] INFO  o.a.c.c.C.[.[.[/promptstore] - Initializing Spring embedded WebApplicationContext
+17:12:17.497 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2903 ms
+17:12:18.176 [cluster-ClusterId{value='65632f1a12ed606ee9ded6e4', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Exception in monitor thread while connecting to server localhost:27017
+com.mongodb.MongoSocketOpenException: Exception opening socket
+	at com.mongodb.internal.connection.SocketStream.open(SocketStream.java:73)
+	at com.mongodb.internal.connection.InternalStreamConnection.open(InternalStreamConnection.java:204)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:199)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:159)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:597)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at com.mongodb.internal.connection.SocketStreamHelper.initialize(SocketStreamHelper.java:107)
+	at com.mongodb.internal.connection.SocketStream.initializeSocket(SocketStream.java:82)
+	at com.mongodb.internal.connection.SocketStream.open(SocketStream.java:68)
+	... 4 common frames omitted
+17:12:18.197 [restartedMain] INFO  org.mongodb.driver.client - MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "4.9.1"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Microsoft/17.0.5+8-LTS"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=MongoCredential{mechanism=null, userName='db_user', source='promptstore', password=<hidden>, mechanismProperties=<hidden>}, streamFactoryFactory=null, commandListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsCommandListener@ec82ede], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@1f8fcb04, com.mongodb.Jep395RecordCodecProvider@6156fa9f]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='30000 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, sendBufferSize=0}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, sendBufferSize=0}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsConnectionPoolListener@225a3fc4], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, contextProvider=null}
+17:12:18.542 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+17:12:20.603 [restartedMain] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 8b357eca-160f-4a45-8e96-ee5d29a998cc
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+17:12:21.000 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+17:12:21.031 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@50b079b1, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@25848ee1, org.springframework.security.web.context.SecurityContextHolderFilter@140e60a6, org.springframework.security.web.header.HeaderWriterFilter@18c6fa1f, org.springframework.web.filter.CorsFilter@5aa2a107, org.springframework.security.web.csrf.CsrfFilter@5cec77dc, org.springframework.security.web.authentication.logout.LogoutFilter@29512f20, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@4e490d85, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@54c702c5, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@583c7713, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@194cd2a4, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6dc0cfc2, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@94f014d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@b92f054, org.springframework.security.web.access.ExceptionTranslationFilter@fa53b15, org.springframework.security.web.access.intercept.AuthorizationFilter@64263e0]
+17:12:21.286 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8091"]
+17:12:21.369 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8091 (http) with context path '/promptstore'
+17:12:21.398 [restartedMain] INFO  c.a.p.PromptstoreApplication - Started PromptstoreApplication in 7.542 seconds (process running for 8.902)
+17:12:22.537 [RMI TCP Connection(1)-127.0.0.1] INFO  o.a.c.c.C.[.[.[/promptstore] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+17:12:22.539 [RMI TCP Connection(1)-127.0.0.1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+17:12:22.541 [RMI TCP Connection(1)-127.0.0.1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+17:12:25.721 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+17:12:25.741 [Thread-4] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8091"]
+17:12:25.742 [Thread-4] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+17:12:25.745 [Thread-4] INFO  o.a.c.c.C.[.[.[/promptstore] - Destroying Spring FrameworkServlet 'dispatcherServlet'
+17:12:25.751 [Thread-4] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8091"]
+17:12:25.756 [Thread-4] INFO  o.a.coyote.http11.Http11NioProtocol - Destroying ProtocolHandler ["http-nio-8091"]
+17:12:25.907 [restartedMain] INFO  c.a.p.PromptstoreApplication - Starting PromptstoreApplication using Java 17.0.5 with PID 26300 (C:\Users\Avinash_Avinash1\OneDrive - Dell Technologies\projects\ai-prompt-catalog\target\classes started by Avinash_Avinash1 in C:\Users\Avinash_Avinash1\OneDrive - Dell Technologies\projects\ai-prompt-catalog)
+17:12:25.909 [restartedMain] INFO  c.a.p.PromptstoreApplication - No active profile set, falling back to 1 default profile: "default"
+17:12:26.561 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+17:12:26.580 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 17 ms. Found 0 MongoDB repository interfaces.
+17:12:26.769 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8091 (http)
+17:12:26.770 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8091"]
+17:12:26.771 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+17:12:26.772 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.15]
+17:12:26.829 [restartedMain] INFO  o.a.c.c.C.[.[.[/promptstore] - Initializing Spring embedded WebApplicationContext
+17:12:26.830 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 915 ms
+17:12:26.976 [restartedMain] INFO  org.mongodb.driver.client - MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "4.9.1"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Microsoft/17.0.5+8-LTS"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=MongoCredential{mechanism=null, userName='db_user', source='promptstore', password=<hidden>, mechanismProperties=<hidden>}, streamFactoryFactory=null, commandListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsCommandListener@3b7b62c], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@1f8fcb04, com.mongodb.Jep395RecordCodecProvider@6156fa9f]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='30000 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, sendBufferSize=0}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, sendBufferSize=0}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsConnectionPoolListener@7ad8f7b1], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, contextProvider=null}
+17:12:26.977 [cluster-ClusterId{value='65632f2212ed606ee9ded6e5', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Exception in monitor thread while connecting to server localhost:27017
+com.mongodb.MongoSocketOpenException: Exception opening socket
+	at com.mongodb.internal.connection.SocketStream.open(SocketStream.java:73)
+	at com.mongodb.internal.connection.InternalStreamConnection.open(InternalStreamConnection.java:204)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:199)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:159)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:597)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at com.mongodb.internal.connection.SocketStreamHelper.initialize(SocketStreamHelper.java:107)
+	at com.mongodb.internal.connection.SocketStream.initializeSocket(SocketStream.java:82)
+	at com.mongodb.internal.connection.SocketStream.open(SocketStream.java:68)
+	... 4 common frames omitted
+17:12:27.051 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+17:12:27.493 [restartedMain] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 9dc4c166-ed97-46e0-88a4-1d9a9f7e1b4e
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+17:12:27.532 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+17:12:27.541 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@84b6d57, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@72648076, org.springframework.security.web.context.SecurityContextHolderFilter@65a23e8d, org.springframework.security.web.header.HeaderWriterFilter@25f3b4af, org.springframework.web.filter.CorsFilter@661de81d, org.springframework.security.web.csrf.CsrfFilter@4cda8943, org.springframework.security.web.authentication.logout.LogoutFilter@69f25f7a, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@37346b2c, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@31490fa5, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@5fc6d279, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@1705ccf3, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7daa33eb, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@9a784f2, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@cb43d03, org.springframework.security.web.access.ExceptionTranslationFilter@65b2397d, org.springframework.security.web.access.intercept.AuthorizationFilter@258aceb8]
+17:12:27.599 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8091"]
+17:12:27.611 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8091 (http) with context path '/promptstore'
+17:12:27.626 [restartedMain] INFO  c.a.p.PromptstoreApplication - Started PromptstoreApplication in 1.784 seconds (process running for 15.131)
+17:12:27.633 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged

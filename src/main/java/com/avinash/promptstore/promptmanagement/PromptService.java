@@ -14,11 +14,11 @@ import com.avinash.promptstore.promptmanagement.models.PromptEntity;
 @CustomLogEnabled
 public class PromptService {
 
-    Logger logger = LoggerFactory.getLogger(PromptService.class);
+    private final Logger logger = LoggerFactory.getLogger(PromptService.class);
 
-    PromptRepository promptRepository;
+    private final PromptRepository promptRepository;
 
-    PromptEntityDTOMapper promptEntityDTOMapper;
+    private final PromptEntityDTOMapper promptEntityDTOMapper;
 
     public PromptService(PromptRepository promptRepository, PromptEntityDTOMapper promptEntityDTOMapper) {
         this.promptRepository = promptRepository;

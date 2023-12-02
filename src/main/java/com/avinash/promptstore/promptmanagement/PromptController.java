@@ -9,30 +9,26 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import com.avinash.promptstore.promptmanagement.dtos.PromptDefaultRequestDTO;
 import com.avinash.promptstore.promptmanagement.dtos.PromptDefaultResponseDTO;
-import com.avinash.promptstore.promptmanagement.mappers.PromptEntityDTOMapper;
 
 @Controller
-public class PromptController implements PromptApi{
+public class PromptController implements PromptApi {
 
-    Logger logger = LoggerFactory.getLogger(PromptController.class);
+    private final Logger logger = LoggerFactory.getLogger(PromptController.class);
 
-    PromptService promptService; 
+    private final PromptService promptService;
 
-    PromptEntityDTOMapper promptEntityDTOMapper;
-
-    public PromptController(PromptService promptService, PromptEntityDTOMapper promptEntityDTOMapper) {
+    public PromptController(PromptService promptService) {
         this.promptService = promptService;
-        this.promptEntityDTOMapper = promptEntityDTOMapper;
     }
 
-    public ResponseEntity<PromptDefaultResponseDTO> post(@RequestBody PromptDefaultRequestDTO requestPayload){
+    public ResponseEntity<PromptDefaultResponseDTO> post(@RequestBody PromptDefaultRequestDTO requestPayload) {
         logger.info("Received POST request for prompt");
         PromptDefaultResponseDTO response = promptService.createPrompt(requestPayload);
         return new ResponseEntity<PromptDefaultResponseDTO>(response, HttpStatus.CREATED);
     }
 
     @GetMapping
-    public ResponseEntity<String> get(){
+    public ResponseEntity<String> get() {
         logger.info("Received get request for prompt");
         return new ResponseEntity<String>("Hello world", HttpStatus.OK);
     }
