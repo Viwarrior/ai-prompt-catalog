@@ -22,3 +22,7 @@ springdoc:
 logging:
     level:
         root: INFO
+
+auth:
+    jwt:
+        key: ${SECRET_KEY:Ydy2AoPokl8/NFluUbYUWcLVtjoT/Ch2Ga3PzKVYc+R+2IDM7DKmn1mza++Z2Voy}
