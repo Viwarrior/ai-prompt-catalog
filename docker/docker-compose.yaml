@@ -14,6 +14,20 @@ services:
       - .\mongo-init:/docker-entrypoint-initdb.d
     networks:
       - "promptstore"
+  app:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+    container_name: prompt-catalog
+    ports:
+      - 8091:8091
+    environment:
+      - SERVER_CONTEXT_PATH=/promptstore
+      - SECRET_KEY=Ydy2AoPokl8/NFluUbYUWcLVtjoT/Ch2Ga3PzKVYc+R+2IDM7DKmn1mza++Z2Voy
+      - MONGODB_HOST=host.docker.internal
+    networks:
+      - "promptstore"
+
 
 networks:
   promptstore:
