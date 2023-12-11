@@ -2,6 +2,7 @@ package com.avinash.promptstore.authmanagement.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -9,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
+import static com.avinash.promptstore.commons.AppConstants.PROFILE_AUTH;
 
 import com.avinash.promptstore.authmanagement.JwtAuthenticationFilter;
 
@@ -28,6 +30,7 @@ public class SecurityFilterConfiguration {
     }
 
     @Bean
+    @Profile(PROFILE_AUTH)
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authz -> authz
@@ -35,6 +38,19 @@ public class SecurityFilterConfiguration {
                         .permitAll()
                         .anyRequest()
                         .authenticated())
+                .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
+                .authenticationProvider(authenticationProvider)
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .build();
+    }
+
+    @Bean
+    @Profile("!"+PROFILE_AUTH)
+    SecurityFilterChain securityFilterChainWithNoAuth(HttpSecurity http) throws Exception {
+        return http.csrf(csrf -> csrf.disable())
+                .authorizeHttpRequests(authz -> authz
+                        .anyRequest()
+                        .permitAll())
                 .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
