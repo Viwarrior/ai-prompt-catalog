@@ -1,11 +1,11 @@
 package com.avinash.promptstore.usermanagement;
 
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.avinash.promptstore.authmanagement.dtos.RegisterRequest;
+import com.avinash.promptstore.usermanagement.exceptions.UserExistsException;
 import com.avinash.promptstore.usermanagement.mappers.UserEntityDTOMapper;
 import com.avinash.promptstore.usermanagement.models.UserEntity;
 
@@ -21,6 +21,9 @@ public class UserService {
     }
 
     public UserEntity createUser(RegisterRequest registerRequest) {
+        if(userRepository.getUserByUsername(registerRequest.getUsername()).isPresent()){
+            throw new UserExistsException(HttpStatus.CONFLICT, "User with given username already exists");
+        }
         return userRepository.insertUser(userEntityDTOMapper.toEntity(registerRequest));
 
     }

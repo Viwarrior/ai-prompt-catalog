@@ -8,11 +8,13 @@ spring:
             username: ${MONGODB_USERNAME:db_user}
             password: ${MONGODB_PASSWORD:db_password}
     profiles:
-        active: ${SPRING_ACTIVE_PROFILE:auth}
+        active: ${SPRING_ACTIVE_PROFILE:default}
 server:
     port: ${SERVER_PORT:8091}
     servlet:
         context-path: ${SERVER_CONTEXT_PATH:/promptstore}
+    error:
+        include-stacktrace: never
 
 springdoc:
     api-docs:
