@@ -6,36 +6,29 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.avinash.promptstore.promptmanagement.dtos.PromptDTO;
-import com.avinash.promptstore.promptmanagement.mappers.PromptEntityDTOMapper;
+import org.springframework.web.bind.annotation.RequestBody;
+import com.avinash.promptstore.promptmanagement.dtos.PromptDefaultRequestDTO;
+import com.avinash.promptstore.promptmanagement.dtos.PromptDefaultResponseDTO;
 
 @Controller
-@RequestMapping(name = "prompts", value = "/api/v1/prompts", consumes = "application/json", produces = "application/json")
-public class PromptController {
+public class PromptController implements PromptApi {
 
-    Logger logger = LoggerFactory.getLogger(PromptController.class);
+    private final Logger logger = LoggerFactory.getLogger(PromptController.class);
 
-    PromptService promptService; 
+    private final PromptService promptService;
 
-    PromptEntityDTOMapper promptEntityDTOMapper;
-
-    public PromptController(PromptService promptService, PromptEntityDTOMapper promptEntityDTOMapper) {
+    public PromptController(PromptService promptService) {
         this.promptService = promptService;
-        this.promptEntityDTOMapper = promptEntityDTOMapper;
     }
 
-    @PostMapping
-    public ResponseEntity<PromptDTO> post(){
-        PromptDTO promptDTO = new PromptDTO(null, "name", null, null, null, null, null, 0, null);
-        promptService.createPrompt(promptEntityDTOMapper.toEntity(promptDTO));
-        return new ResponseEntity<PromptDTO>(promptDTO, HttpStatus.CREATED);
+    public ResponseEntity<PromptDefaultResponseDTO> post(@RequestBody PromptDefaultRequestDTO requestPayload) {
+        logger.info("Received POST request for prompt");
+        PromptDefaultResponseDTO response = promptService.createPrompt(requestPayload);
+        return new ResponseEntity<PromptDefaultResponseDTO>(response, HttpStatus.CREATED);
     }
 
     @GetMapping
-    public ResponseEntity<String> get(){
+    public ResponseEntity<String> get() {
         logger.info("Received get request for prompt");
         return new ResponseEntity<String>("Hello world", HttpStatus.OK);
     }

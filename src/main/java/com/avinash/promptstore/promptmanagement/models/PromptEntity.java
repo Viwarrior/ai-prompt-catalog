@@ -1,38 +1,30 @@
-package com.avinash.promptstore.promptmanagement.entities;
-
-import java.util.List;
-import java.util.UUID;
+package com.avinash.promptstore.promptmanagement.models;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Document(collection = "prompt")
+@Document(collection = "prompts")
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class PromptEntity {
 
     @Id
     private String promptId;
 
-    private UUID userId;
-
     private String name;
 
     private String description;
 
-    private String version;
+    @Builder.Default
+    private int version = 1;
 
     private String content;
-
-    private UUID authorId;
-
-    private List<String> verifiedOn;
-
-    private int upvotes;
-
-    private UUID topicId;
-
+    
 }

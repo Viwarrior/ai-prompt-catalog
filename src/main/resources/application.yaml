@@ -7,7 +7,26 @@ spring:
             database: ${MONGODB_DATABASE:promptstore}
             username: ${MONGODB_USERNAME:db_user}
             password: ${MONGODB_PASSWORD:db_password}
+    profiles:
+        active: ${SPRING_ACTIVE_PROFILE:default}
 server:
     port: ${SERVER_PORT:8091}
     servlet:
         context-path: ${SERVER_CONTEXT_PATH:/promptstore}
+    error:
+        include-stacktrace: never
+
+springdoc:
+    api-docs:
+        path: /api-spec
+    swagger-ui:
+        path: /swagger-ui
+
+
+logging:
+    level:
+        root: INFO
+
+auth:
+    jwt:
+        key: ${SECRET_KEY:Ydy2AoPokl8/NFluUbYUWcLVtjoT/Ch2Ga3PzKVYc+R+2IDM7DKmn1mza++Z2Voy}

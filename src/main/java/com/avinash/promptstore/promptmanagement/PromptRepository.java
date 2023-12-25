@@ -1,9 +1,9 @@
 package com.avinash.promptstore.promptmanagement;
 
-import com.avinash.promptstore.promptmanagement.entities.PromptEntity;
+import com.avinash.promptstore.promptmanagement.models.PromptEntity;
 
 public interface PromptRepository {
 
-    String insertPrompt(PromptEntity promptEntity);
+    PromptEntity insertPrompt(PromptEntity promptEntity);
 
 }
