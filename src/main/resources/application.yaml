@@ -8,7 +8,7 @@ spring:
             username: ${MONGODB_USERNAME:db_user}
             password: ${MONGODB_PASSWORD:db_password}
     profiles:
-        active: ${SPRING_ACTIVE_PROFILE:default}
+        active: ${SPRING_ACTIVE_PROFILE:default,auth}
 server:
     port: ${SERVER_PORT:8091}
     servlet:
