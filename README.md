@@ -40,21 +40,14 @@ The system consists of the following components:
 ### Clone the Repository
 
 ```
-git clone https://github.com/your-username/ai-prompt-catalog.git
+git clone https://github.com/avinash-550/ai-prompt-catalog.git
 ```
 
 ### Build the Project
 
+```bash
+mvn clean install
 ```
-cd ai-prompt-catalog
-docker-compose build
-```
-
-The project consists of the following services:
-- **Front-End**: A React application serving the user interface.
-- **Back-End**: A Spring Boot service providing REST APIs.
-- **Database**: A MongoDB instance for data storage.
-- **Search Engine**: ElasticSearch for fast and efficient prompt searching.
 
 
 
@@ -77,38 +70,42 @@ docker-compose up
 ### Accessing the REST API
 - Use tools like `curl`, Postman, or similar clients to interact with the backend services.
 
-#### Example: Fetch All Prompts
-```
-curl -X GET "http://localhost:8080/api/prompts" \
-  -H "Content-Type: application/json"
-```
-
-#### Response:
-```json
-[
-  {
-    "id": "1",
-    "name": "Example Prompt",
-    "description": "A sample description",
-    "content": "Prompt content goes here"
-  }
-]
-```
-
-
 
 ## API Design
 ### **Register User**
 - **Method**: `POST`
 - **URL**: `http://localhost:8091/promptstore/api/v1/auth/register`
-- **Headers**:
-  - `Authorization`: `Bearer <Access Token>`
 - **Request Body**:
   ```json
   {
     "username": "example",
     "password": "example"
   }
+  ```
+- **Response**:
+  ```json
+  {
+    "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhdmluYXNoIiwiaWF0IjoxNzM2MjczMDgwLCJleHAiOjE3MzYzMDkwODB9.hz3wcy16uapZvo0X_8fLAGCyqQMriaKoFJ6NVpwBBsA"
+  }
+  ```
+
+
+### **Login**
+- **Method**: `POST`
+- **URL**: `http://localhost:8091/promptstore/api/v1/auth/login`
+- **Request Body**:
+    ```json
+  {
+    "username": "example",
+    "password": "example"
+  }
+  ```
+- **Response**:
+  ```json
+  {
+    "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhdmluYXNoIiwiaWF0IjoxNzM2MjczMDgwLCJleHAiOjE3MzYzMDkwODB9.hz3wcy16uapZvo0X_8fLAGCyqQMriaKoFJ6NVpwBBsA"
+  }
+  ```
   
 ### **Create Prompt**
 - **Method**: `POST`
@@ -128,7 +125,8 @@ curl -X GET "http://localhost:8080/api/prompts" \
   {
     "name": "New Prompt",
     "description": "Prompt description",
-    "content": "Prompt content"
+    "content": "Prompt content",
+    "version": 1,
   }
   ```
 
@@ -143,7 +141,8 @@ curl -X GET "http://localhost:8080/api/prompts" \
     {
       "name": "Example Prompt",
       "description": "A sample description",
-      "content": "Prompt content goes here"
+      "content": "Prompt content goes here",
+      "version": 1,
     }
   ]
   ```
@@ -151,14 +150,11 @@ curl -X GET "http://localhost:8080/api/prompts" \
 
 
 ## Configuration
-
 | Environment Variable      | Default Value | Description                                   |
-|||--|
-| `ELASTICSEARCH_HOST`      | `localhost`   | ElasticSearch host for fast searching         |
-| `MONGODB_URI`             | `localhost`   | MongoDB URI for storing prompts               |
-| `SERVER_PORT`             | `8080`        | Spring Boot application port                  |
-
-
+|---------------------------|---------------|-----------------------------------------------|
+| `SERVER_CONTEXT_PATH`     | `/promptstore`| Spring Boot application context path          |
+| `SECRET_KEY`              | `Ydy2AoPokl8/NFluUbYUWcLVtjoT/Ch2Ga3PzKVYc+R+2IDM7DKmn1mza++Z2Voy` | Secret key for Spring Boot application       |
+| `MONGODB_HOST`            | `host.docker.internal` | MongoDB host for storing prompts          |
 
 ## How It Works
 
