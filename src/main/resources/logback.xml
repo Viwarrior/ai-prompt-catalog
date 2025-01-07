@@ -8,7 +8,8 @@
     </appender>
 
     <!-- Rolling File Appender -->
-    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <!-- Enable if required -->
+    <!-- <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>logs/app.log</file>
         <encoder>
             <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
@@ -19,7 +20,7 @@
             <maxHistory>7</maxHistory>
             <totalSizeCap>1GB</totalSizeCap>
         </rollingPolicy>
-    </appender>
+    </appender> -->
 
     <!-- Root Logger -->
     <root level="debug">
