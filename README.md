@@ -56,7 +56,7 @@ mvn clean install
 Start all the services using Docker Compose:
 
 ```bash
-docker-compose up
+docker-compose -f docker/docker-compose-depencencies.yaml up --build -d
 mvn spring-boot:run
 ```
 
