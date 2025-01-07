@@ -134,7 +134,7 @@ docker-compose up
 - **Method**: `GET`
 - **Headers**:
   - `Authorization`: `Bearer <Access Token>`
-- **URL**: `promptstore/api/v1/prompts?size=10&page=0`
+- **URL**: `http://localhost:8091/promptstore/api/v1/prompts?size=10&page=0`
 - **Response**:
   ```json
   [
