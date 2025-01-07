@@ -1,97 +1,183 @@
 # AI Prompt Catalog
-Spring boot + React Application to create, search and
-manage AI prompts.
+A Spring Boot + React application to create, search, and manage AI prompts efficiently.
 
-## Quick start
 
-### Clone the repository
+
+## Features
+
+- **Prompt Creation**: Add, update, and delete AI prompts with ease.
+- **Fast Searching**: ElasticSearch integration for high-speed query responses.
+- **MongoDB Integration**: Scalable and reliable NoSQL database for storing prompts.
+- **REST API**: Manage prompts programmatically with a RESTful interface.
+- **Modern UI**: React-based user interface for seamless prompt management.
+
+
+
+## Architecture
+The system consists of the following components:
+- **Front-End**: A React-based web application.
+- **Back-End**: A Spring Boot service exposing RESTful APIs.
+- **Database**: MongoDB for storing prompt data.
+- **Search Engine**: ElasticSearch for optimized search capabilities.
+
+![Architecture Diagram](artifacts/architecture.png)
+
+
+
+## Requirements
+
+- **Java 17**
+- **Spring Boot 3.xx**
+- **MongoDB** (Installed locally or accessible via Docker)
+- **ElasticSearch**
+- **Maven** (for building the project)
+- **Node.js** and **npm** (for the front-end)
+
+
+
+## Quick Start
+
+### Clone the Repository
 
 ```
-git clone https://github.com/Viwarrior/ai-prompt-catalog.git
+git clone https://github.com/your-username/ai-prompt-catalog.git
 ```
 
-### Build the project
+### Build the Project
 
 ```
 cd ai-prompt-catalog
 docker-compose build
 ```
 
-The project includes a ``front-end`` service running the react code, a ``rest`` service, running the Java code and a ``db`` service, running a mongo database.
-See the ``docker-compose.yml`` file for details.
+The project consists of the following services:
+- **Front-End**: A React application serving the user interface.
+- **Back-End**: A Spring Boot service providing REST APIs.
+- **Database**: A MongoDB instance for data storage.
+- **Search Engine**: ElasticSearch for fast and efficient prompt searching.
 
-### Run the project
+
+
+### Run the Services
+
+Start all the services using Docker Compose:
 
 ```
 docker-compose up
-````
-
-This will start the all services. The launch url of the project -http://localhost:8091.
-
-Hot-reloading is enabled (i.e. changes to the Java code in the project will cause the application to restart so that they 
-can be used.)
-
-## Key features
-
-### logging
-log aggregation using kafka.
-
-rest proxy - https://developer.confluent.io/get-started/rest/#produce-events
-kafka console basics - 
-  ```kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic test```
-
-## How to
-
-### Run the local project on a different port
-
-The container runs a Tomcat server listening on port 8080. The ``docker-compose.yml`` file is set up to
-expose this port to the Docker host at port 8000, but you are free to change it as you wish - edit the ``ports`` directive:
-
-```
-services:
-  web:
-    [...]
-    ports: 
-      - 8000:8080
 ```
 
 
-### External how-to guides
 
-* [Open API 3.0 documentation](https://www.baeldung.com/spring-rest-openapi-documentation)
-* [Accessing Relational Data using JDBC with Spring](https://spring.io/guides/gs/relational-data-access/)
-* [Managing Transactions](https://spring.io/guides/gs/managing-transactions/)
-* [Accessing data with MongoTemplate](https://www.concretepage.com/spring-5/spring-data-mongotemplate#insert)
-* [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
-* [Securing a Web Application](https://spring.io/guides/gs/securing-web/)
-* [Spring Boot and OAuth2](https://spring.io/guides/tutorials/spring-boot-oauth2/)
-* [Authenticating a User with LDAP](https://spring.io/guides/gs/authenticating-ldap/)
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
+## Usage
+
+### Accessing the Front-End
+- Navigate to **http://localhost:3000** in your browser to access the web interface.
+- Use the UI to create, search, and manage AI prompts.
+
+### Accessing the REST API
+- Use tools like `curl`, Postman, or similar clients to interact with the backend services.
+
+#### Example: Fetch All Prompts
+```
+curl -X GET "http://localhost:8080/api/prompts" \
+  -H "Content-Type: application/json"
+```
+
+#### Response:
+```json
+[
+  {
+    "id": "1",
+    "name": "Example Prompt",
+    "description": "A sample description",
+    "content": "Prompt content goes here"
+  }
+]
+```
 
 
-## Reference
 
-This project template uses:
+## API Design
+### **Register User**
+- **Method**: `POST`
+- **URL**: `http://localhost:8091/promptstore/api/v1/auth/register`
+- **Headers**:
+  - `Authorization`: `Bearer <Access Token>`
+- **Request Body**:
+  ```json
+  {
+    "username": "example",
+    "password": "example"
+  }
+  
+### **Create Prompt**
+- **Method**: `POST`
+- **URL**: `http://localhost:8091/promptstore/api/v1/prompts`
+- **Headers**:
+  - `Authorization`: `Bearer <Access Token>`
+- **Request Body**:
+  ```json
+  {
+    "name": "New Prompt",
+    "description": "Prompt description",
+    "content": "Prompt content"
+  }
+  ```
+- **Response**:
+  ```json
+  {
+    "name": "New Prompt",
+    "description": "Prompt description",
+    "content": "Prompt content"
+  }
+  ```
 
-* [Java 17](https://www.oracle.com/java/technologies/downloads/) for backend programming
-* [FlywayDB](https://flywaydb.org/) for database migrations
-* [Gradle](https://gradle.org/) to build and, in dev-mode, run the application with hot reload
-* [Spring JPA](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/) for database access
-* [Spring Web](https://spring.io/guides/gs/serving-web-content/) to serve HTTP requests
-* [Thymeleaf](https://www.thymeleaf.org/doc/tutorials/3.0/thymeleafspring.html) for HTML-templating
+### **Get All Prompts**
+- **Method**: `GET`
+- **Headers**:
+  - `Authorization`: `Bearer <Access Token>`
+- **URL**: `promptstore/api/v1/prompts?size=10&page=0`
+- **Response**:
+  ```json
+  [
+    {
+      "name": "Example Prompt",
+      "description": "A sample description",
+      "content": "Prompt content goes here"
+    }
+  ]
+  ```
 
 
-### External reference
 
-* [Official Gradle documentation](https://docs.gradle.org)
-* [Gradle Build Scans – insights for your project's build](https://scans.gradle.com#gradle)
-* [Spring Boot Gradle Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/gradle-plugin/reference/html/)
-* [Spring Boot DevTools](https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#using-boot-devtools)
-* [Thymeleaf](https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#boot-features-spring-mvc-template-engines)
-* [JDBC API](https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#boot-features-sql)
-* [Flyway Migration](https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#howto-execute-flyway-database-migrations-on-startup)
-* [Spring Data JPA](https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#boot-features-jpa-and-spring-data)
-* [Spring Security](https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#boot-features-security)
-* [Spring Web](https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#boot-features-developing-web-applications)
+## Configuration
+
+| Environment Variable      | Default Value | Description                                   |
+|||--|
+| `ELASTICSEARCH_HOST`      | `localhost`   | ElasticSearch host for fast searching         |
+| `MONGODB_URI`             | `localhost`   | MongoDB URI for storing prompts               |
+| `SERVER_PORT`             | `8080`        | Spring Boot application port                  |
+
+
+
+## How It Works
+
+1. **Prompt Management**:  
+   - Prompts are created, updated, and deleted via the REST API or front-end interface.
+   
+2. **Search Optimization**:  
+   - ElasticSearch enables full-text and metadata-based search for prompts.
+
+3. **Data Storage**:  
+   - MongoDB stores the prompts and their metadata.
+
+4. **Modern Front-End**:  
+   - React provides an intuitive interface for users.
+
+
+
+## To Do
+
+- Add user authentication and role-based access control.
+- Expand search capabilities (e.g., fuzzy search).
+- Implement logging and monitoring for production.
