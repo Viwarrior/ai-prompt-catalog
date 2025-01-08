@@ -53,10 +53,38 @@ mvn clean install
 
 ### Run the Services
 
-Start all the services using Docker Compose:
-
+#### Start the dependencies
 ```bash
 docker-compose -f docker/docker-compose-depencencies.yaml up --build -d
+```
+#### Create index for prompts in ES
+```bash
+curl -X PUT "http://localhost:9200/prompts" -H 'Content-Type: application/json' -d'
+{
+  "settings": {
+    "number_of_shards": 1,
+    "number_of_replicas": 0
+  },
+  "mappings": {
+    "properties": {
+      "name": {
+        "type": "text"
+      },
+      "description": {
+        "type": "text"
+      },
+      "content": {
+        "type": "text"
+      },
+      "version": {
+        "type": "integer"
+      }
+    }
+  }
+}'
+```
+#### Start the SpringBoot application
+```bash
 mvn spring-boot:run
 ```
 
