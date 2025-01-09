@@ -1,5 +1,5 @@
 # AI Prompt Catalog
-A Spring Boot + React application to create, search, and manage AI prompts efficiently.
+A Spring Boot application to create, search, and manage AI prompts efficiently.
 
 
 
@@ -9,13 +9,11 @@ A Spring Boot + React application to create, search, and manage AI prompts effic
 - **Fast Searching**: ElasticSearch integration for high-speed query responses.
 - **MongoDB Integration**: Scalable and reliable NoSQL database for storing prompts.
 - **REST API**: Manage prompts programmatically with a RESTful interface.
-- **Modern UI**: React-based user interface for seamless prompt management.
 
 
 
 ## Architecture
 The system consists of the following components:
-- **Front-End**: A React-based web application.
 - **Back-End**: A Spring Boot service exposing RESTful APIs.
 - **Database**: MongoDB for storing prompt data.
 - **Search Engine**: ElasticSearch for optimized search capabilities.
@@ -31,7 +29,6 @@ The system consists of the following components:
 - **MongoDB** (Installed locally or accessible via Docker)
 - **ElasticSearch**
 - **Maven** (for building the project)
-- **Node.js** and **npm** (for the front-end)
 
 
 
@@ -91,10 +88,6 @@ mvn spring-boot:run
 
 
 ## Usage
-
-### Accessing the Front-End
-- Navigate to **http://localhost:3000** in your browser to access the web interface.
-- Use the UI to create, search, and manage AI prompts.
 
 ### Accessing the REST API
 - Use tools like `curl`, Postman, or similar clients to interact with the backend services.
@@ -222,13 +215,10 @@ mvn spring-boot:run
 3. **Data Storage**:  
    - MongoDB stores the prompts and their metadata.
 
-4. **Modern Front-End**:  
-   - React provides an intuitive interface for users.
-
 
 
 ## To Do
-- Add React front end code.
+- Add front end code.
 - Add role-based access control.
 - Implement logging and monitoring for production.
 - Add contract tests.
