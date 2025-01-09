@@ -8,7 +8,7 @@ spring:
             username: ${MONGODB_USERNAME:db_user}
             password: ${MONGODB_PASSWORD:db_password}
     profiles:
-        active: ${SPRING_ACTIVE_PROFILE:default}
+        active: ${SPRING_ACTIVE_PROFILE:default,auth}
 server:
     port: ${SERVER_PORT:8091}
     servlet:
@@ -32,4 +32,4 @@ auth:
         key: ${SECRET_KEY:Ydy2AoPokl8/NFluUbYUWcLVtjoT/Ch2Ga3PzKVYc+R+2IDM7DKmn1mza++Z2Voy}
 
 elasticsearch:
-    url: http://localhost:9200
+    url: ${ELASTICSEARCH_URI:http://localhost:9200}

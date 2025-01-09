@@ -176,14 +176,40 @@ mvn spring-boot:run
   ]
   ```
 
-
-
+### **Search Prompts**
+- **Method**: `GET`
+- **URL**: `http://localhost:8091/promptstore/api/v1/prompts/search?query=quiz&size=2&page=1`
+- **Headers**:
+  - `Authorization`: `Bearer <Access Token>`
+- **Response**:
+  ```json
+  [
+    {
+        "name": "History Quiz Generator2",
+        "description": "A prompt to generate trivia questions on world history.",
+        "version": 1,
+        "content": "Create five multiple-choice questions about the events of World War II, including correct answers and explanations."
+    },
+    {
+        "name": "History Quiz Generator3",
+        "description": "A prompt to generate trivia questions on world history.",
+        "version": 1,
+        "content": "Create five multiple-choice questions about the events of World War II, including correct answers and explanations."
+    }
+  ]
+  ```
 ## Configuration
 | Environment Variable      | Default Value | Description                                   |
 |---------------------------|---------------|-----------------------------------------------|
 | `SERVER_CONTEXT_PATH`     | `/promptstore`| Spring Boot application context path          |
-| `SECRET_KEY`              | `Ydy2AoPokl8/NFluUbYUWcLVtjoT/Ch2Ga3PzKVYc+R+2IDM7DKmn1mza++Z2Voy` | Secret key for Spring Boot application       |
+| `SECRET_KEY`              | `Ydy2AoPokl8/NFluUbYUWcLVtjoT/Ch2Ga3PzKVYc+R+2IDM7DKmn1mza++Z2Voy` | Secret key for JWT auth      |
 | `MONGODB_HOST`            | `host.docker.internal` | MongoDB host for storing prompts          |
+| `MONGODB_PORT`            | `27017` | MongoDB port for storing prompts          |
+| `MONGODB_DATABASE`        | `promptstore` | MongoDB database for storing prompts          |
+| `MONGODB_USERNAME`        | `db_user` | MongoDB username for storing prompts          |
+| `MONGODB_PASSWORD`        | `db_password` | MongoDB password for storing prompts          |
+| `ELASTICSEARCH_URI`       | `http://localhost:9200` | Elasticsearch URI for indexing prompts    |
+
 
 ## How It Works
 
@@ -202,7 +228,7 @@ mvn spring-boot:run
 
 
 ## To Do
-
-- Add user authentication and role-based access control.
-- Expand search capabilities (e.g., fuzzy search).
+- Add React front end code.
+- Add role-based access control.
 - Implement logging and monitoring for production.
+- Add contract tests.
