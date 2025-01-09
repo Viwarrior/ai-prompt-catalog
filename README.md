@@ -20,7 +20,9 @@ The system consists of the following components:
 
 ![Architecture Diagram](artifacts/architecture.png)
 
+## Demo
 
+<img src="artifacts/demo.gif" alt="Demo" style="width:75%;">
 
 ## Requirements
 
