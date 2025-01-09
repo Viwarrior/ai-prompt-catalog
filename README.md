@@ -22,7 +22,7 @@ The system consists of the following components:
 
 ## Demo
 
-<img src="artifacts/demo.gif" alt="Demo" style="width:75%;">
+<img src="artifacts/demo.gif" alt="Demo" style="width:300;">
 
 ## Requirements
 
