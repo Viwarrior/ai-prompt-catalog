@@ -1,5 +1,12 @@
-{"properties": [{
-  "name": "auth.jwt.key",
-  "type": "java.lang.String",
-  "description": "jwt signing key"
-}]}
+{"properties": [
+  {
+    "name": "auth.jwt.key",
+    "type": "java.lang.String",
+    "description": "jwt signing key"
+  },
+  {
+    "name": "elasticsearch.url",
+    "type": "java.lang.String",
+    "description": "A description for 'elasticsearch.url'"
+  }
+]}

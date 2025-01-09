@@ -32,10 +32,21 @@ public class PromptController implements PromptApi {
     }
 
     @GetMapping
-    public ResponseEntity<List<PromptDefaultResponseDTO>> get(@RequestParam(defaultValue = "0") int page,
+    public ResponseEntity<List<PromptDefaultResponseDTO>> getAllPrompts(@RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
         logger.info("Received get request for prompt");
         List<PromptDefaultResponseDTO> responseList = promptService.getAllPromptsPaginated(page, size);
-        return new ResponseEntity<List<PromptDefaultResponseDTO>>(responseList, HttpStatus.OK);
+        return new ResponseEntity<List<PromptDefaultResponseDTO>>(responseList,
+                HttpStatus.OK);
     }
+
+    @GetMapping("search")
+    public ResponseEntity<List<PromptDefaultResponseDTO>> searchPrompt(
+            @RequestParam(defaultValue = "content") String query,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        List<PromptDefaultResponseDTO> responseList = promptService.searchPromptsByKey(query, page, size);
+        return new ResponseEntity<>(responseList, HttpStatus.OK);
+    }
+
 }
